@@ -14,30 +14,30 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Input.Fname"></label>
-                <input asp-for="Input.Fname" class="form-control" />
+                <input asp-for="Input.Fname" class="form-control" id="fname"/>
                 <span asp-validation-for="Input.Fname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.Sname"></label>
-                <input asp-for="Input.Sname" class="form-control" />
+                <input  asp-for="Input.Sname" class="form-control" id="sname" />
                 <span asp-validation-for="Input.Sname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
+                <input  asp-for="Input.Email" class="form-control" id="email"/>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
+                <input asp-for="Input.Password" class="form-control" id="password"/>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <input  asp-for="Input.ConfirmPassword" class="form-control" id="confirmPass"/>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary" id="confirmReg">Register</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">

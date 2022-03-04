@@ -7,7 +7,7 @@
 <h1>Order Details</h1>
 
 <div>
-    <h4>OrderModel</h4>
+   <h4>Order Number @Model.OrderId</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -58,8 +58,57 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
+        <!--Render order placed-->
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderPlaced)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderPlaced)
+        </dd>
     </dl>
 </div>
+
+<!---Render product name-->
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model.OrderLines)
+        { 
+        <tr>
+            <td class="text-center">@product.Amount
+            
+             </td>
+            <td class="text-left">@product.Product.Description</td>
+            <td class="text-right">@product.Product.Price.ToString("c")</td>
+            <td class="text-right">
+                @((product.Amount*product.Product.Price).ToString("c"))
+
+            </td>
+        </tr>
+        }
+    </tbody>
+    <!--Now pulls total of each order through-->
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.OrderTotal.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.OrderId" class="btn btn-secondary">Edit</a> |
     <a asp-action="Index">Back to List</a>

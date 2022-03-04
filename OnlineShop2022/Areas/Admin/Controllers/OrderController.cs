@@ -38,10 +38,20 @@ namespace OnlineShop2022
 
             var orderModel = await _context.Orders
                 .FirstOrDefaultAsync(m => m.OrderId == id);
+
+
             if (orderModel == null)
             {
                 return NotFound();
             }
+
+            //Retrieving corresponding product details to order from database.
+            //convert order id/product id into list. Where order id/details = order id. 
+            orderModel.OrderLines = await _context.OrderDetails.Where(m => m.OrderId == orderModel.OrderId).Include("Product").ToListAsync();
+            orderModel.OrderTotal = orderModel.OrderLines.Sum(x => x.Price * x.Amount);
+
+            //Display when order was placed.
+            orderModel.OrderPlaced = orderModel.OrderPlaced;
 
             return View(orderModel);
         }
