@@ -169,11 +169,15 @@ namespace TestProject
             //New shopping cart model to access calculation methods.
             var model = new ShoppingCartModel(_db) { ShoppingCartId = _ShoppingCart.ShoppingCartId, ShoppingCartItems = _ShoppingCart.ShoppingCartItems };
 
-            var products = await _db.Products.ToListAsync();
+            var items = await _db.Products.ToListAsync();
             List<double> prices = new List<double>();
 
             //Act  - The correctTotal variable shows order total  from the products in the cart. testTotal is total retrieved by the test. 
-            foreach (var p in products) { prices.Add(p.Price); }
+            foreach (var i in items) {
+                prices.Add(i.Price); 
+            
+            }
+
             var correctTotal = prices.Sum();
 
             var testTotal = model.GetShoppingCartTotal();
