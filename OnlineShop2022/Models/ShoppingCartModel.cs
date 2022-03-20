@@ -106,5 +106,8 @@ namespace OnlineShop2022.Models
                 .Select(c => c.Product.Price * c.Amount).Sum();
             return total;
         }
+
+
+
     }
 }
