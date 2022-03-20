@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OnlineShop2022.Areas.Admin;
 using OnlineShop2022.Controllers;
 using OnlineShop2022.Data;
 using OnlineShop2022.Models;
@@ -70,8 +71,28 @@ namespace TestProject
 
 
         }
+        
+       
 
-    
+
+        [Fact] //Retrieve products inside the Home Controller
+        public async void HomeControllerListProducts()
+        {
+            //Arrange - Create mock database and add dummy data
+            CreateMockDB();
+            var dummyProduct1 = new ProductModel() { Id = 1, Description = "Test Data 1" };
+            var dummyProduct2 = new ProductModel() { Id = 2, Description = "Test Data 2" };
+
+            //Act  - Assessable variable - Render database products into a text list
+            var result = await _db.Products.ToListAsync(); 
+
+            //Assert - Check the list is not null
+            Assert.NotNull(result);
+        }
+
+
+
+
 
 
     }

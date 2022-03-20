@@ -11,6 +11,8 @@ namespace OnlineShop2022.Models
     {
         //[BindNever]
         [Key]
+
+        [Display(Name = "Order Id")]
         public int OrderId { get; set; }
         public List<OrderDetailModel> OrderLines { get; set; }
 
@@ -54,10 +56,12 @@ namespace OnlineShop2022.Models
 
         //[BindNever]
         //[ScaffoldColumn(false)]
+        [Display(Name = "Order Total")]
         public double OrderTotal { get; set; }
 
         //[BindNever]
         //[ScaffoldColumn(false)]
+        [Display(Name = "Order Placed")]
         public DateTime OrderPlaced { get; set; }
 
     }

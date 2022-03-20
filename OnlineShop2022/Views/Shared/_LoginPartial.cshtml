@@ -21,6 +21,8 @@
             @await Component.InvokeAsync("ShoppingCartSummary")
         </li>
 
+
+
         @if (User.IsInRole("Manager"))
         {
             @await Component.InvokeAsync("AdminMenu")
