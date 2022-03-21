@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using System.Threading;
 
 namespace AuthenticationTests
@@ -75,7 +76,8 @@ namespace AuthenticationTests
         public void MenuRestrictedToAdmin()
         {
             //Checking eleemnts that should be disabled are. Restricted buttons on user role should be null.
-            
+            IWebElement adminButton = null;
+            IWebElement managerButton = null;
 
             //login as admin user
             driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
@@ -85,12 +87,56 @@ namespace AuthenticationTests
             passInput.SendKeys("Admin123!");
             loginInput.SendKeys(Keys.Return);
             //click browse button
-            driver.FindElement(By.Id("adminButton")).Click(); ;
+           adminButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]"));
+           managerButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]"));
 
-
-
+            if (adminButton == null || managerButton == null)
+            {
+                Assert.Fail();
+                End();
+            }
+            else
+            {
+                Assert.Pass();
+                End();
+            }
 
         }
+
+
+
+        [Test]
+
+        public void MenuRestrictedToManager()
+        {
+            //Checking eleemnts that should be disabled are. Restricted buttons on user role should be null.
+            IWebElement adminButton = null;
+            IWebElement managerButton = null;
+
+            //login as admin user
+            driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
+            IWebElement loginInput = driver.FindElement(By.Id("username"));
+            loginInput.SendKeys("man@man.com");
+            IWebElement passInput = driver.FindElement(By.Id("password"));
+            passInput.SendKeys("Manager123!");
+            loginInput.SendKeys(Keys.Return);
+            //click browse button
+            adminButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]"));
+            managerButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[4]"));
+
+            if (adminButton != null || managerButton == null)
+            {
+                Assert.Fail();
+                End();
+            }
+            else
+            {
+                Assert.Pass();
+                End();
+            }
+
+        }
+
 
         //logout
 
