@@ -20,21 +20,7 @@ namespace AuthenticationTests
 
 
 
-        //login
-
-        [Test]
-        public void LogIn()
-        {
-
-            driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
-            IWebElement loginInput = driver.FindElement(By.Id("username"));
-            loginInput.SendKeys("admin@admin.com");
-            IWebElement passInput = driver.FindElement(By.Id("password"));
-            passInput.SendKeys("Admin123!");
-            loginInput.SendKeys(Keys.Return);
-            //click browse button
-
-        }
+      
 
   
         //register route works
@@ -58,7 +44,7 @@ namespace AuthenticationTests
             IWebElement snameInput = driver.FindElement(By.Id("sname"));
             snameInput.SendKeys("Test");
             IWebElement emailInput = driver.FindElement(By.Id("email"));
-            emailInput.SendKeys("admin@admin.com");
+            emailInput.SendKeys("admins@admins.com");
             IWebElement passInput = driver.FindElement(By.Id("password"));
             passInput.SendKeys("Admin123!");
             IWebElement passwInput = driver.FindElement(By.Id("confirmPass"));
@@ -121,10 +107,8 @@ namespace AuthenticationTests
             passInput.SendKeys("Manager123!");
             loginInput.SendKeys(Keys.Return);
             //click browse button
-            adminButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]"));
-            managerButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[4]"));
 
-            if (adminButton != null || managerButton == null)
+            if (adminButton != null && managerButton == null)
             {
                 Assert.Fail();
                 End();
@@ -135,7 +119,49 @@ namespace AuthenticationTests
                 End();
             }
 
+
         }
+
+            [Test]
+
+            public void MenuRestrictedToUser()
+            {
+                //Checking eleemnts that should be disabled are. Restricted buttons on user role should be null.
+                IWebElement adminButton = null;
+                IWebElement managerButton = null;
+
+                //login as admin user
+                driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
+                IWebElement loginInput = driver.FindElement(By.Id("username"));
+                loginInput.SendKeys("user@user.com");
+                IWebElement passInput = driver.FindElement(By.Id("password"));
+                passInput.SendKeys("User123!!");
+                loginInput.SendKeys(Keys.Return);
+                //click browse button
+                try
+                {
+                    adminButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]"));
+                }
+                catch { }
+
+                try
+                {
+                    managerButton = driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[4]"));
+                }
+                catch { }
+
+                if (adminButton != null || managerButton != null)
+                {
+                    Assert.Fail();
+                    End();
+                }
+                else
+                {
+                    Assert.Pass();
+                    End();
+                }
+
+            }
 
 
         //logout
