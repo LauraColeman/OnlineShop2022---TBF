@@ -20,9 +20,22 @@ namespace AuthenticationTests
 
 
 
-      
+        [Test]
+        public void LogIn()
+        {
 
-  
+            driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
+            IWebElement loginInput = driver.FindElement(By.Id("username"));
+            loginInput.SendKeys("admin@admin.com");
+            IWebElement passInput = driver.FindElement(By.Id("password"));
+            passInput.SendKeys("Admin123!");
+            loginInput.SendKeys(Keys.Return);
+            //click browse button
+
+        }
+
+
+
         //register route works
         [Test]
         public void RegisterButtonOnHomePage()
