@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,6 +17,10 @@ namespace AuthenticationTests
             driver.Manage().Window.Maximize();
         }
 
+
+
+        //login
+
         [Test]
         public void LogIn()
         {
@@ -28,21 +33,10 @@ namespace AuthenticationTests
             loginInput.SendKeys(Keys.Return);
             //click browse button
 
-            
-
         }
 
-        //logout
-
-        //Called after each test is run.
-        [TearDown]
-        public void End()
-        {
-            driver.Close();
-
-        }
-
-
+  
+        //register route works
         [Test]
         public void RegisterButtonOnHomePage()
         {
@@ -50,7 +44,7 @@ namespace AuthenticationTests
             Thread.Sleep(5000);
         }
 
-
+        //register new user
 
         [Test]
         public void RegisterNewUser()
@@ -71,9 +65,42 @@ namespace AuthenticationTests
             IWebElement confirmReg = driver.FindElement(By.Id("confirmReg"));
             confirmReg.SendKeys(Keys.Return);
 
+           
         }
-        
 
+
+
+        [Test]
+
+        public void MenuRestrictedToAdmin()
+        {
+            //Checking eleemnts that should be disabled are. Restricted buttons on user role should be null.
+            
+
+            //login as admin user
+            driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
+            IWebElement loginInput = driver.FindElement(By.Id("username"));
+            loginInput.SendKeys("admin@admin.com");
+            IWebElement passInput = driver.FindElement(By.Id("password"));
+            passInput.SendKeys("Admin123!");
+            loginInput.SendKeys(Keys.Return);
+            //click browse button
+            driver.FindElement(By.Id("adminButton")).Click(); ;
+
+
+
+
+        }
+
+        //logout
+
+        //Called after each test is run.
+        [TearDown]
+        public void End()
+        {
+            driver.Close();
+
+        }
 
 
 
