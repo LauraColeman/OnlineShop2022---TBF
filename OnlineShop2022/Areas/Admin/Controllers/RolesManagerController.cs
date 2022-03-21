@@ -37,7 +37,12 @@ namespace OnlineShop2022.Areas.Admin.Controllers
         
         public async Task<IActionResult> DeleteRole(string id)
         {
+
             if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+           else
             {
                 var role = await _roleManager.FindByIdAsync(id);
                 await _roleManager.DeleteAsync(role);

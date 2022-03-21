@@ -96,7 +96,20 @@ namespace SeleniumTestProject
 
         }
 
+        [Test]
 
+        public void DeleteRoleSuccess()
+        {
+            //click admin menu
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]")).Click();
+            //click role management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[3]/ul/li[2]/a")).Click();
+            //click delete role for Test.
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[4]/td[3]/a")).Click();
+
+            Thread.Sleep(2000);
+
+        }
 
     }
 }
