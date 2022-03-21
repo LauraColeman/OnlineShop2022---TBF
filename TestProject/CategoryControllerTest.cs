@@ -132,7 +132,7 @@ namespace TestProject
             //Act  - Test to access edit view.
             var result = await controller.Create(dummyCat2);
 
-            //Assert - Return edit view to pass. See Selenium EditTests for editing functionality.
+            //Assert - Test if error message is returned.
 
             Assert.NotNull(result);
         }

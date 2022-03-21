@@ -75,7 +75,7 @@ namespace TestProject
         
         public async void ProductUpdateIdNotNull()
         {
-            CreateMockDB();
+           
             //Arrange
             //needs images, iweb and database.
             CreateMockDB();
