@@ -60,8 +60,19 @@ namespace OnlineShop2022.Areas.Admin
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] CategoryModel categoryModel)
+
         {
-            if (ModelState.IsValid)
+
+
+            //additional validation script to handle duplicate id attempts
+
+            if (_context.Categories.Any(c => c.Id == categoryModel.Id))
+            {
+                string errorMessage = categoryModel.Name + "is Already Registered. Please Try a Different Name and Try Again.";
+                ViewData["CategoryCreate"] = errorMessage;
+                return View();
+            }
+            else
             {
                 _context.Add(categoryModel);
                 await _context.SaveChangesAsync();

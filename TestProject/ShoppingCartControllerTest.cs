@@ -54,8 +54,6 @@ namespace TestProject
             CreateRepo();
             ShoppingCartController controller = new ShoppingCartController(_ProductRepository, _ShoppingCart);
 
-
-
             //New product to be added to shopping car and controlled by controller functions.
             var addProd = new ProductModel() { Id = 3, Description = "New Dummy Product", Price = 10 };
 
@@ -66,7 +64,7 @@ namespace TestProject
 
             //Act - New shopping cart created after adding a product
             controller.AddToShoppingCart(addProd.Id);
-            _db.Products.ToList();
+           
 
             _ShoppingCart.AddToCart(addProd, 1);
 
@@ -101,7 +99,7 @@ namespace TestProject
 
             //Act - New shopping cart created after adding a product
             controller.AddToShoppingCart(addProd.Id);
-            _db.Products.ToList();
+            
 
             _ShoppingCart.AddToCart(addProd, 3);
 
@@ -133,7 +131,7 @@ namespace TestProject
             //Act - New shopping cart created after adding a product
             //add product to cart to be removed
             controller.AddToShoppingCart(addProd.Id);
-            _db.Products.ToList();
+           
 
             //remove from cart
             _ShoppingCart.RemoveFromCart(addProd);
