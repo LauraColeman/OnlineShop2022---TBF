@@ -102,6 +102,61 @@ namespace TestProject
 
         }
         
+        [Fact]
+
+        public async void ProductCreationSuccessful()
+        {
+
+            //Arrange - Create the mock database, images and controller
+            CreateMockDB();
+            _images = new Images(_webHostEnvironment);
+            ProductController controller = new ProductController(_db, _webHostEnvironment, _images);
+
+            //Dummy data to add
+            ProductViewModel productViewModel = new ProductViewModel();
+            ProductModel model = new ProductModel() { Id = 20, Description = "Tst dummy product", Price = 40, Colour = "Black", ImagePath = "imagePath" };
+            productViewModel.Product = model;
+
+            //Act - Added new product to controller
+            var result = await controller.Create(productViewModel);
+
+            //Assert - View should not be null
+            Assert.NotNull(result);
+
+
+        }
+
+        [Fact]
+
+        public async void ProductDeletionSuccessful()
+        {
+
+            //Arrange - Create the mock database, images and controller
+            CreateMockDB();
+            _images = new Images(_webHostEnvironment);
+            ProductController controller = new ProductController(_db, _webHostEnvironment, _images);
+
+            //Dummy product to be deleted
+            ProductViewModel productViewModel = new ProductViewModel();
+            ProductModel model = new ProductModel() { Id = 20, Description = "Test dummy product", Price = 40, Colour = "Black", ImagePath = "imagePath" };
+            productViewModel.Product = model;
+
+            //Act - Deleting added product.
+            var product = model;
+            var result = await controller.Delete(product.Id, product);
+
+            //Assert - Check item has been deleted. Not null.
+            Assert.NotNull(result);
+
+
+        }
+
+
+
+
+
+
+
 
 
     }

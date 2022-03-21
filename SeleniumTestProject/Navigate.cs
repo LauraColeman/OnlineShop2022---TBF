@@ -13,15 +13,13 @@ namespace NavigationTests
     public class Navigate
     {
 
-        IWebDriver driver;
+        IWebDriver driver = new ChromeDriver("C:\\Users\\Laura\\Documents");
 
         [OneTimeSetUp]
         public void Setup()
         {
             //run chrome in background.
-            var options = new ChromeOptions();
-            options.AddArguments("headless");
-            driver = new ChromeDriver(options);
+          
 
             driver.Navigate().GoToUrl("https://onlineshoptest.azurewebsites.net");
             driver.Manage().Window.Maximize();

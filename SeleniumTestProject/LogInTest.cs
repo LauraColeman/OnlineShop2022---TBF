@@ -7,7 +7,7 @@ namespace AuthenticationTests
 {
     public class LogInTests
     {
-        IWebDriver driver = new ChromeDriver("C:\\Users\\Laura\\Downloads\\chromedriver_win32");
+        IWebDriver driver = new ChromeDriver("C:\\Users\\Laura\\Documents");
 
 
         [SetUp]
