@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using com.sun.org.apache.xalan.@internal.xsltc;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -42,7 +43,7 @@ namespace NavigationTests
             Assert.AreEqual(TitleHome, "Home Page - OnlineShop2022");
         }
 
-
+        //Works, but sleneium doesn't seem to update changes. Still comes up as privacy when on manual test it definitely isnt. No ids, titles or tags left behind to cause this.
         [Test]
         public void NavigatetoBrowse()
         {
@@ -50,10 +51,40 @@ namespace NavigationTests
             
             driver.FindElement(By.Id("browse")).Click();
             string Title = driver.Title;
-            Assert.AreEqual(Title, "Products Page");
+            Assert.AreEqual(Title, "Products Page - OnlineShop2022");
             Thread.Sleep(5000);
             
         }
+
+        //Navigate to profile - bit buggy, doesn't find the element half the time no matter what method is used. However, does work and pass the test.
+
+        [Test]
+        public void NavigatetoProfile()
+        {
+            driver.FindElement(By.Id("manage")).Click();
+            string Title = driver.Title;
+            Assert.AreEqual(Title, "Profile - OnlineShop2022");
+            Thread.Sleep(5000);
+
+        }
+
+        //navigate to admin menu functions
+
+        [Test]
+        public void NavigatetoCart()
+        {
+
+
+            driver.FindElement(By.Id("yourCart")).Click();
+            string Title = driver.Title;
+            Assert.AreEqual(Title, "Your Shopping Cart - OnlineShop2022");
+            Thread.Sleep(5000);
+
+        }
+
+        //navigate to manager menu functions
+
+
 
 
         [TearDown]

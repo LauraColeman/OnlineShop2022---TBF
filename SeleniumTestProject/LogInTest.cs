@@ -9,7 +9,6 @@ namespace AuthenticationTests
     {
         IWebDriver driver = new ChromeDriver("C:\\Users\\Laura\\Documents");
 
-
         [SetUp]
         public void Setup()
         {
@@ -33,6 +32,7 @@ namespace AuthenticationTests
 
         }
 
+        //logout
 
         //Called after each test is run.
         [TearDown]
