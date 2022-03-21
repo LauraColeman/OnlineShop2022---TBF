@@ -50,7 +50,7 @@ namespace NavigationTests
             
             driver.FindElement(By.Id("browse")).Click();
             string Title = driver.Title;
-            Assert.AreEqual(Title, "Browse");
+            Assert.AreEqual(Title, "Products Page");
             Thread.Sleep(5000);
             
         }
