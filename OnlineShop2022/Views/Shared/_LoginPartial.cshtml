@@ -25,12 +25,12 @@
 
         @if (User.IsInRole("Manager"))
         {
-            @await Component.InvokeAsync("AdminMenu")
+            @await Component.InvokeAsync("ManagerMenu")
         }
 
         @if (User.IsInRole("Admin"))
         {
-            @await Component.InvokeAsync("ManagerMenu")
+            @await Component.InvokeAsync("AdminMenu")
 
         }
 
