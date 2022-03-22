@@ -15,6 +15,7 @@
             <th scope="col">#</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+             <th scope="col">Details</th>
             <th scope="col">Image</th>
             <th scope="col">Actions</th>
         </tr>
@@ -27,6 +28,7 @@
                 <th scope="row">@product.Id</th>
                 <td>@product.Description</td>
                 <td>@product.Price</td>
+                <td>@product.Details</td>
                 <td><img src="@product.ImagePath" class="img-thumbnail img-product"></td>
                 <td>
                     <a class="btn btn-secondary" asp-controller="Product" asp-action="Update" asp-route-id="@product.Id">Edit</a>
