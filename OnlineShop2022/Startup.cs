@@ -9,7 +9,6 @@ using Microsoft.Extensions.Hosting;
 using OnlineShop2022.Data;
 using OnlineShop2022.Helpers;
 using OnlineShop2022.Models;
-using SignalRChat.Hubs;
 using Stripe;
 using Stripe.Checkout;
 using System;
@@ -17,7 +16,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.SignalR;
 
 
 namespace OnlineShop2022
@@ -36,8 +34,7 @@ namespace OnlineShop2022
         {
             services.AddScoped<Images>();
             services.AddControllersWithViews();
-            //configure SignalR middleware
-            services.AddSignalR();
+          
 
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -100,7 +97,8 @@ namespace OnlineShop2022
             {
 
                 endpoints.MapRazorPages();
-                endpoints.MapHub<ChatHub>("/chathub");
+
+                
 
                 endpoints.MapControllerRoute(
                      name: "areas",

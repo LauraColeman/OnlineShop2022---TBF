@@ -36,7 +36,7 @@ namespace OnlineShop2022.Controllers
             return View(products);
         }
 
-
+      
         public IActionResult Privacy()
         {
             return View();
