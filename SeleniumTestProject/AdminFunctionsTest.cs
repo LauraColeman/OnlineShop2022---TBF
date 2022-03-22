@@ -186,7 +186,41 @@ namespace SeleniumTestProject
         }
 
 
+        [Test]
+        public void EditOrderSuccessful()
+        {
+            //click admin menu
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]")).Click();
+            //click order management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[3]/ul/li[3]/a")).Click();
+            //click edit
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[1]/td[10]/a[1]")).Click();
+            IWebElement editInput = driver.FindElement(By.Id("FirstName"));
+            //input new name
+            editInput.SendKeys("TestTwo");
+            //save
+            driver.FindElement(By.XPath("/html/body/div/main/div[1]/div/form/div[9]/input")).Click();
 
+
+            End();
+        }
+
+        [Test]
+        public void DeleteOrderSuccessful()
+        {
+            //click admin menu
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]")).Click();
+            //click order management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[3]/ul/li[3]/a")).Click();
+            //click delete
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[2]/td[10]/a[3]")).Click();
+            
+            //save
+            driver.FindElement(By.XPath("/html/body/div/main/div/form/input[2]")).Click();
+
+
+            End();
+        }
 
     }
 
