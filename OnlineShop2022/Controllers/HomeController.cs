@@ -28,11 +28,16 @@ namespace OnlineShop2022.Controllers
         public async Task<IActionResult> Index()
         {
             var products = await _db.Products.ToListAsync();
+        
             //only displays 3 most recent products on page
             return View(_db.Products.OrderByDescending(d => d.Id).Take(3));
             //return View(products);
+
+           
         }
 
+
+     
         public async Task<IActionResult> Products(string id)
         {
             var products = await _db.Products.ToListAsync();
