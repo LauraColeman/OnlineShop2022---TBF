@@ -111,5 +111,84 @@ namespace SeleniumTestProject
 
         }
 
+            [Test]
+
+            public void AddCategorySuccess()
+            {
+            //click admin menu
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]")).Click();
+            //click cateegory management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[3]/ul/li[3]/a")).Click();
+            //click create new
+            driver.FindElement(By.XPath("/html/body/div/main/p/a")).Click();
+            //fill box
+            //fill add role box
+            IWebElement catInput = driver.FindElement(By.Id("Name"));
+            catInput.SendKeys("Test");
+
+        }
+
+
+        [Test]
+
+        public void DeleteCategorySuccess()
+        {
+            //click admin menu
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]")).Click();
+            //click cateegory management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[3]/ul/li[3]/a")).Click();
+            //delete test
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[2]/td[2]/a[2]")).Click();
+            driver.FindElement(By.XPath("/html/body/div/main/div/form/input[2]")).Click();
+
+
+            End();
+        }
+
+
+        [Test]
+
+        public void EditCategorySuccess()
+        {
+            //click admin menu
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[3]")).Click();
+            //click cateegory management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[3]/ul/li[3]/a")).Click();
+            //edit test
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[2]/td[2]/a[1]")).Click();
+            driver.FindElement(By.XPath("/html/body/div/main/div/form/input[2]")).Click();
+            //input new name
+            IWebElement editInput = driver.FindElement(By.Id("Name"));
+            editInput.SendKeys("TestTwo");
+            //save
+            driver.FindElement(By.XPath("/html/body/div/main/div[1]/div/form/div[2]/input")).Click();
+
+
+            End();
+        }
+        [Test]
+
+
+       public void DeleteProductSuccess()
+        {
+            //click manager menu
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[4]/a")).Click();
+            //click product management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[4]/ul/li[2]/a")).Click();
+            //click delete on test
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[4]/td[4]/a[2]")).Click();
+            //confirm delete
+            driver.FindElement(By.XPath("/html/body/div/main/form/div/div/button")).Click();
+
+            End();
+
+
+        }
+
+
+
+
     }
+
+    
 }
