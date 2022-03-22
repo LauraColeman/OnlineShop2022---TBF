@@ -23,11 +23,14 @@ namespace OnlineShop2022.Controllers
             _logger = logger;
             _db = db;
         }
+       
 
         public async Task<IActionResult> Index()
         {
             var products = await _db.Products.ToListAsync();
-            return View(products);
+            //only displays 3 most recent products on page
+            return View(_db.Products.OrderByDescending(d => d.Id).Take(3));
+            //return View(products);
         }
 
         public async Task<IActionResult> Products(string id)
@@ -48,6 +51,22 @@ namespace OnlineShop2022.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+
+
+        public async Task<IActionResult> ProductDetail(int? id)
+        {
+
+            var productModel = await _db.Products
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (productModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(productModel);
         }
     }
 }

@@ -18,6 +18,8 @@ namespace OnlineShop2022.Models
         [Range(0.0, 999999.99)]
         public double Price { get; set; }
 
+        public string Details { get; set; }
+
         public string ImagePath { get; set; }
 
         public string Colour { get; set; }

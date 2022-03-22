@@ -1,0 +1,43 @@
+﻿@model OnlineShop2022.Models.ProductModel
+
+@{
+    ViewData["Title"] = "ProductDetail";
+}
+
+
+<h1>Product</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+ 
+          
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+             
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Details)
+            </td>
+           
+           
+        </tr>
+    </tbody>
+</table>

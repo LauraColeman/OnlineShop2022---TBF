@@ -22,6 +22,7 @@ namespace OnlineShop2022.Areas.Admin
         private IWebHostEnvironment _webHostEnvironment;
         private Images _images;
 
+
         public ProductController(AppDbContext db, IWebHostEnvironment webHostEnvironment, Images images)
         {
             _webHostEnvironment = webHostEnvironment;
@@ -34,6 +35,25 @@ namespace OnlineShop2022.Areas.Admin
             return View(products);
         }
 
+        // GET: Admin/Category/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            return NotFound();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var productModel = await _db.Categories
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (productModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(productModel);
+        }
 
         public IActionResult Create()
         {

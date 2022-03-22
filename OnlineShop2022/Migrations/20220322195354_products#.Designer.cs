@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineShop2022.Data;
 
 namespace OnlineShop2022.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220322195354_products#")]
+    partial class products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -282,9 +284,9 @@ namespace OnlineShop2022.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJlUqdHXaOKpF4HPrWVpchxwBbMNMRTz7FeWpkdmPbWW7+v+ArHI6YT3txJUpND5GA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOwN0FVfEvsrJMxVOVF+lDqhkvzW8ASEHWP/J1VjBYp02LzuWCNOhrWEGGbDy9ks7Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "60d7f4c3-406f-4729-8c51-ec5b92a7e243",
+                            SecurityStamp = "47eccc4c-de67-4611-9bb8-863f01ee8937",
                             Sname = "Admin",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
