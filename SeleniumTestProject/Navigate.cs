@@ -86,6 +86,33 @@ namespace NavigationTests
 
         }
 
+        //navigate to new product page
+        [Test]
+        public void NavigateToProductDetail()
+        {
+            String currentURL = driver.Url;
+            //navigate to products
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[1]")).Click();
+            string Title = driver.Title;
+            Assert.AreEqual(Title, "Products Page - OnlineShop2022");
+            Thread.Sleep(5000);
+            //press view
+            driver.FindElement(By.XPath("/html/body/div/main/div/div[1]/div/div/a[2]")).Click();
+            //assert url matches seeded product
+
+            if (currentURL != "https://onlineshoptest.azurewebsites.net/Home/ProductDetail/2")
+            {
+                Assert.Fail();
+                End();
+            }
+
+            else
+            {
+                Assert.Pass();
+                End();
+            }
+        }
+
 
 
         [TearDown]
