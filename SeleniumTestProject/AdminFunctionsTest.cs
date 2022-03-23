@@ -184,6 +184,21 @@ namespace SeleniumTestProject
 
 
         }
+        public void EditProductSuccess()
+        {
+            //click manager menu
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[4]/a")).Click();
+            //click product management
+            driver.FindElement(By.XPath("/html/body/header/nav/div/div/ul/li[4]/ul/li[2]/a")).Click();
+            //click delete on test
+            driver.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[4]/td[4]/a[2]")).Click();
+            //confirm delete
+            driver.FindElement(By.XPath("/html/body/div/main/form/div/div/button")).Click();
+
+            End();
+
+
+        }
 
 
         [Test]
