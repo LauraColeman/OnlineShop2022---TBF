@@ -113,6 +113,36 @@ namespace NavigationTests
             }
         }
 
+        [Test]
+        public void NavigateToReview()
+        {
+
+            String currentURL = driver.Url;
+            //navigate to products
+            driver.FindElement(By.XPath("//html/body/header/nav/div/div/ul/li[1]")).Click();
+            string Title = driver.Title;
+            Assert.AreEqual(Title, "Products Page - OnlineShop2022");
+            Thread.Sleep(5000);
+            //press view
+            driver.FindElement(By.XPath("/html/body/div/main/div/div[1]/div/div/a[2]")).Click();
+            //press leave review
+            driver.FindElement(By.XPath("/html/body/div/main/a[2]")).Click();
+
+            //check url matches leave review route
+            if (currentURL != "https://onlineshoptest.azurewebsites.net/Review/Create?data=2")
+            {
+                Assert.Fail();
+                End();
+            }
+
+            else
+            {
+                Assert.Pass();
+                End();
+            }
+
+        }
+
 
 
         [TearDown]
