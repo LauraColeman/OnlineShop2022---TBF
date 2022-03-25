@@ -61,17 +61,23 @@ namespace OnlineShop2022.Controllers
 
 
 
-        public async Task<IActionResult> ProductDetail(int? id)
-        {
+        
 
-            var productModel = await _db.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (productModel == null)
+        public async Task<ActionResult<ProductReviewModel>> ProductDetail(int id)
+        {
+            var product = await _db.Products.FirstOrDefaultAsync(r => r.Id == id);
+            var reviews = await _db.Reviews.OrderByDescending(d => d.Id).Take(6).Where(r => r.ProductId == id).ToListAsync();
+
+            ProductReviewModel prm = new ProductReviewModel() { Product = product, Reviews = reviews };
+
+            if (prm == null)
             {
                 return NotFound();
             }
-
-            return View(productModel);
+            else
+            {
+                return View(prm);
+            }
         }
     }
 }

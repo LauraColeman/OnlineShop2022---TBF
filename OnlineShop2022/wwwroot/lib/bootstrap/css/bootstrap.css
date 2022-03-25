@@ -487,6 +487,12 @@ iframe {
     border: 0;
 }
 
+#revCard {
+    margin: 30px;
+    padding: 20px;
+}
+
+
 summary {
     display: list-item;
     cursor: pointer;

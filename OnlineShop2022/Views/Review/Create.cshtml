@@ -1,0 +1,15 @@
+﻿@model OnlineShop2022.Models.ReviewModel
+
+<h1>Leave a Review</h1>
+
+<div class="container">
+    <form method="post" asp-controller="Review" asp-action="Create" enctype="multipart/form-data">
+        <input asp-for="Title" placeholder="Title" id="Title" name="Title" />
+        <input asp-for="Body" placeholder="Body" id="Body" name="Body" />
+        <input asp-for="Rating" placeholder="Rating" id="Rating" name="Rating" />
+        <input asp-for="ProductId" type="hidden" value="@ViewBag.product" id="ProductId" style="display:" name="ProductId" />
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Leave Review</button>
+        </div>
+    </form>
+</div>

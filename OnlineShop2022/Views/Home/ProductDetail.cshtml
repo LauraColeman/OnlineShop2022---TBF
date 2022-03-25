@@ -1,4 +1,4 @@
-﻿@model OnlineShop2022.Models.ProductModel
+﻿@model OnlineShop2022.Models.ProductReviewModel
 
 @{
     ViewData["Title"] = "ProductDetail";
@@ -11,7 +11,7 @@
 <a asp-action="products" class="btn btn-secondary">Back</a>
 </div>
 
-<h1 class="align-items-center text-center mb-5">@Html.DisplayFor(model => model.Description)</h1>
+<h1 class="align-items-center text-center mb-5">@Html.DisplayFor(model => model.Product.Description)</h1>
 
   </div>
   </div>
@@ -25,9 +25,9 @@
 <div class="col align-items-center ">
 <div> 
                   
-        <p class="card-text mt-3">@Html.DisplayFor(model => model.Description)</p>
-        <p class="card-text mt-3">@Html.DisplayFor(model => model.Price)</p>
-        <p class="card-text mt-3">@Html.DisplayFor(model => model.Details)</p>
+        <p class="card-text mt-3">@Html.DisplayFor(model => model.Product.Description)</p>
+        <p class="card-text mt-3">@Html.DisplayFor(model => model.Product.Price)</p>
+        <p class="card-text mt-3">@Html.DisplayFor(model => model.Product.Details)</p>
                         
       
                        </div>    
@@ -38,11 +38,33 @@
             
 <div id="prodDetail" class="col-6 ">
 
-    <img src="@Html.DisplayFor(model => model.ImagePath)" class="card-img-top img-product-main">
+    <img src="@Html.DisplayFor(model => model.Product.ImagePath)" class="card-img-top img-product-main">
 
 </div>
 </div>
 </div>
 
-<a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@Model.Id">Add to cart</a> 
-                
+<a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProductId="@Model.Product.Id">Add to cart</a> 
+
+<h3>Reviews</h3>
+<h6>See how this product has been recieved by our customers</h6>
+<div class="row m-5">
+    @{
+        foreach (var review in Model.Reviews)
+        {
+           <div class="col-lg-4 border mt-3" id="revCard">
+                        <p class="card-text">@review.Title</p>
+                        <div class="row mt-3" id="revCard">
+                            @for(var i = 0; i < review.Rating; i++)
+                            {
+                                <p id="revCard" class="col-md-2">⭐</p>
+                            }
+                        </div>       
+                <p class=""id="revCard">@review.Body</p>
+                    </div>
+        }
+    }
+</div>
+
+<h4>Want to share your experience? Leave a review yourself</h4>
+<a class= "btn btn-info" asp-controller="Review" asp-action="Create" asp-route-data="@Model.Product.Id">Leave a Review</a>

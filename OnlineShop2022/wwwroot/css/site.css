@@ -21,6 +21,10 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+#revCard{
+    margin:30px;
+    padding:20px;
+}
 
 
 /*Product detail page*/

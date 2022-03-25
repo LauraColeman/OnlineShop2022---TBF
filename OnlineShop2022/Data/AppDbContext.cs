@@ -8,6 +8,7 @@ namespace OnlineShop2022.Data
     public class AppDbContext : IdentityDbContext<CustomUserModel>
     {
         public DbSet<ProductModel> Products { get; set; }
+        public DbSet<ReviewModel> Reviews { get; set; }
 
         public DbSet<CategoryModel> Categories { get; set; }
         public DbSet<ShoppingCartItemModel> ShoppingCartItems { get; set; }
